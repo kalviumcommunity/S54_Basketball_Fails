@@ -1,12 +1,15 @@
+
 {
   "name": "s54_basketball_fails",
   "version": "1.0.0",
-  "description": "## Idea:-  List of Funniest BasketBall Fails",
+  "description": "List of Funniest Basketball Fails",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "your-build-command"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["basketball", "fails", "funny", "sports"],
+  "author": "Pranshu",
+  "license": "MIT"
 }
