@@ -3,15 +3,23 @@ const main = require("./init");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  main()
+let databaseConnected = false
+main()
     .then(() => {
       console.log("Database Connected");
-      res.send("Database Connected");
+      databaseConnected = true
     })
     .catch((err) => {
       console.log(err);
     });
+
+app.get("/", (req, res) => {
+  if(databaseConnected){
+    res.send("Database Connected");
+  }
+  else{
+    res.send("Some error occured")
+  }
 });
 
 app.get("/ping", (req, res) => {
