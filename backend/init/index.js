@@ -86,10 +86,10 @@ let postData = [
   })
 ]
 
-Post.insertMany(postData)
-.then((data)=>{
-  console.log("Data sent successfulyy");
-})
-.catch((err)=>{
-  console.log(err);
-})
+// Post.insertMany(postData)
+// .then((data)=>{
+//   console.log("Data sent successfulyy");
+// })
+// .catch((err)=>{
+//   console.log(err);
+// })
