@@ -14,12 +14,7 @@ main()
     });
 
 app.get("/", (req, res) => {
-  if(databaseConnected){
-    res.send("Database Connected");
-  }
-  else{
-    res.send("Some error occured")
-  }
+  res.send("Home page")
 });
 
 app.get("/ping", (req, res) => {
