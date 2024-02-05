@@ -1,0 +1,114 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: Pranshu;
+  src: url("../fonts/Druk-Bold-Trial.otf");
+}
+.navbar-container{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  top: 3%;
+}
+.navbar{ 
+  width: 70vmax;
+  height: 4.5vmax;
+   background-color: #251a12;
+  display: flex;
+  color: whitesmoke;
+  align-items: center;
+  font-family: Pranshu;
+  justify-content: space-between;
+  z-index: 1;
+  border-radius: 50px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0 2vmax 0 1vmax;
+}
+.left{
+  display: flex;
+  align-items: center;
+  /* width: 20vmax; */
+  /* height: 10vmax; */
+  justify-content: center;
+  gap: 0.5vmax;
+}
+.navbar-logo img{
+  width:4vmax;
+}
+.basketball-fails{
+  font-size: 2vmax;
+  letter-spacing: 0.2vmax;
+}
+.basketball-fails span{
+  color: #eb0e19;
+}
+.right{
+  display: flex;
+  justify-content: center;
+}
+.login{
+  font-size: 1.5vmax;
+  letter-spacing: 0.2vmax;
+}
+.bg-img{
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://thumbs.dreamstime.com/b/white-noise-texture-static-interference-grunge-vector-background-tv-screen-no-signal-153318844.jpg");
+  opacity: 0.05;
+  top: 0;
+  position: fixed;
+
+}
+.bg-color{
+  background: rgb(255,246,213);
+  background: linear-gradient(180deg, rgb(168, 83, 13) 0%, rgb(0, 0, 0) 100%);
+  background-size: 100vw 100vh;
+  z-index: -2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background: linear-gradient(180deg, rgb(197, 95, 12) 0%, rgb(0, 0, 0) 100%);
+  background-size: 100vw 100vh;
+
+}
+.home-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10vmax;
+  height: 100vh;
+  align-items: center;
+}
+.home-center{
+  display: flex;
+  gap: 5vmax;
+
+}
+.homegrid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 5vmax;
+}
+.home-image img{
+  width: 35vmax;
+  
+}
+.home-text{
+  font-size: 7vmax;
+  text-align: center;
+  color: rgb(172, 164, 164);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+.explore{
+  position: absolute;
+  bottom: 8%;
+  padding: 0.5vmax 2vmax;
+}
