@@ -1,9 +1,10 @@
 const mongoose =  require("mongoose");
 const Post = require("../models/post");
+require("dotenv").config()
 
 
 async function main(){
-  await mongoose.connect("mongodb+srv://pranshu19:WkJ9147qWCKgOX10@basketball-fails.3mk856i.mongodb.net/");
+  await mongoose.connect(process.env.MONGO_KEY);
 }
 
 module.exports = main;

@@ -11,10 +11,13 @@ const Home = () => {
           alt=""
         />
       </div>
-      <div className="home-text">Worst <br />Plays In Nba History</div>
+      <div className="home-text">Worst <br />Plays In Nba History
+      
+      </div>
       
     </div>
     <button className="explore">Explore</button>
+    
     </div>
 
   );
