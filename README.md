@@ -15,6 +15,3 @@ Welcome to the Funniest Basketball Fails project! This web application is dedica
 - Categories
 - Feedback
 
- [Deployed Link](https://basketball-fails.onrender.com)
-
-
