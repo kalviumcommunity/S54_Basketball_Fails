@@ -130,9 +130,7 @@ border: 2px solid #ffffff2e;
 .card-img>img:hover{  
   transform: scale(1.04);
 }
-.card-img{
-  /* width: 30vmax; */
-}
+
 .card-img>img{
   border-radius: 10px;
   transition: all 0.2s;
