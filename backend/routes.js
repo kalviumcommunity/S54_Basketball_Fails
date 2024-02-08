@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Post = require("./models/post");
+const router = express.Router()
 
 const port = 3000;
 app.use(express.json())
@@ -18,19 +19,19 @@ main()
     console.log(err);
   });
 
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   await Post.find().then((data) => {
     returnedData = data;
   });
   res.send(returnedData);
 });
-app.post("/",async(req,res)=>{
+router.post("/",async(req,res)=>{
   let postData = new Post(req.body)
   await postData.save()
   .then(()=>res.send(`ADDED, ${req.body.title}`))
   .catch((err)=>res.status(500).send(err))
 })
-app.put("/:title",async(req,res)=>{
+router.put("/:title",async(req,res)=>{
   const {title} = req.params
   const newTitle = req.body.title
   try{
@@ -46,7 +47,7 @@ app.put("/:title",async(req,res)=>{
     res.status(500).send("Internal error occured")
   }
 })
-app.delete("/",async(req ,res)=>{
+router.delete("/",async(req ,res)=>{
   try{
     let toDelete = req.body.title
     let titleDelete = await Post.deleteOne({title:toDelete})
@@ -62,6 +63,5 @@ app.delete("/",async(req ,res)=>{
     res.status(500).send("Internal error occured")
   }
 })
-app.listen(port, () => {
-  console.log("listening to port: ", port);
-});
+
+module.exports = router
