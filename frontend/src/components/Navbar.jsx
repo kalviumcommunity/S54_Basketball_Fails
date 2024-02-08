@@ -5,15 +5,22 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
       <div className="navbar">
-        <div className="left">
-        <div className="navbar-logo"><img src={basketball} alt="" /></div>
-        <div className='basketball-fails'>Basketball <span>Fails</span></div>
+        <div className="navbar-left">
+          <div className="navbar-logo">
+            <img src={basketball} alt="" />
+          </div>
+          <div className="navbar-basketball">
+            Basketball <span>Fails</span>
+          </div>
         </div>
-        <div className="right">
-          <div className='login'>Login</div>
+        <div className="navbar-right">
+          <div className="faq">FAQ</div>
+          <div className="login">Login</div>
+          <div className="signin">Sign in</div>
         </div>
       </div>
     </div>
+
   )
 }
 

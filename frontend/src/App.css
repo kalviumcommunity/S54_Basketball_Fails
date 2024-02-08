@@ -7,108 +7,186 @@
   font-family: Pranshu;
   src: url("../fonts/Druk-Bold-Trial.otf");
 }
-.navbar-container{
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  position: fixed;
-  top: 3%;
-}
-.navbar{ 
-  width: 70vmax;
-  height: 4.5vmax;
-   background-color: #251a12;
-  display: flex;
-  color: whitesmoke;
-  align-items: center;
-  font-family: Pranshu;
-  justify-content: space-between;
-  z-index: 1;
-  border-radius: 50px;
-  border: 1px solid rgb(0, 0, 0);
-  padding: 0 2vmax 0 1vmax;
-}
-.left{
-  display: flex;
-  align-items: center;
-  /* width: 20vmax; */
-  /* height: 10vmax; */
-  justify-content: center;
-  gap: 0.5vmax;
-}
-.navbar-logo img{
-  width:4vmax;
-}
-.basketball-fails{
-  font-size: 2vmax;
-  letter-spacing: 0.2vmax;
-}
-.basketball-fails span{
-  color: #eb0e19;
-}
-.right{
-  display: flex;
-  justify-content: center;
-}
-.login{
-  font-size: 1.5vmax;
-  letter-spacing: 0.2vmax;
-}
 .bg-img{
   position: fixed;
-  z-index: -1;
   width: 100%;
   height: 100%;
   background-image: url("https://thumbs.dreamstime.com/b/white-noise-texture-static-interference-grunge-vector-background-tv-screen-no-signal-153318844.jpg");
   opacity: 0.05;
-  top: 0;
-  position: fixed;
-
 }
 .bg-color{
-  background: rgb(255,246,213);
-  background: linear-gradient(180deg, rgb(168, 83, 13) 0%, rgb(0, 0, 0) 100%);
-  background-size: 100vw 100vh;
-  z-index: -2;
+  z-index: -1;
   position: fixed;
-  top: 0;
   width: 100%;
   height: 100%;
-  background-size: 100% 100%;
   background: linear-gradient(180deg, rgb(197, 95, 12) 0%, rgb(0, 0, 0) 100%);
-  background-size: 100vw 100vh;
+}
+.navbar-container{
+  /* display: flex; */
+  /* justify-content: center; */
+  padding-top: 2vmax;
+  padding-left: 5vmax;
+  padding-right: 5vmax;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.navbar{
+  display:flex ;
+  justify-content: space-between;
+  color: #D0D5FA;
+  background-color: #000000;
+  padding: 0 2vmax;
+  /* width: 80vmax; */
+  border-radius: 50px;
+  font-family: Pranshu;
+  backdrop-filter: blur( 4px );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 4px solid #ffffff2e;
+
+background: #000000b3;
+/* background: #00000059; */
+
+/* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 2px solid #ffffff2e;
 
 }
-.home-container{
+.navbar-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-logo{
+  padding-bottom: 0.5vmin;
+}
+.navbar-logo img{
+  width: 4vmax;
+}
+.navbar-basketball{
+  font-size: 2.5vmax;
+  letter-spacing: 0.2vmax;
+}
+.navbar-basketball span{
+  color: #eb0e19;
+}
+.navbar-right{
+  display: flex;
+  gap: 2vmin;
+  font-size: 1.2vmax;
+  letter-spacing: 0.2vmax;
+  align-items: center;
+}
+.faq,login,signin:hover{
+  cursor: pointer;
+}
+.home-parent{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 10vmax;
-  height: 100vh;
-  align-items: center;
 }
-.home-center{
+.home-container{
   display: flex;
-  gap: 5vmax;
-
+  justify-content: space-between;
+  padding: 0 7vmax;
+  height: 80vh;
 }
-.homegrid{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 5vmax;
+.home-image {
+  display: flex;
+  align-items: center;
+
 }
 .home-image img{
   width: 35vmax;
-  
+  border-radius: 10px;
 }
 .home-text{
+  display: flex;
+  align-items: center;
   font-size: 7vmax;
   text-align: center;
   color: rgb(172, 164, 164);
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
 }
-.explore{
-  position: absolute;
-  bottom: 8%;
-  padding: 0.5vmax 2vmax;
+.button{
+  text-align: center;
+}
+#listings-parent{
+  padding: 5vmin 5vmin;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 1vmin; */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.card-img>img:hover{  
+  transform: scale(1.04);
+}
+.card-img{
+  /* width: 30vmax; */
+}
+.card-img>img{
+  border-radius: 10px;
+  transition: all 0.2s;
+  /* width: 35vmax; */
+
+}
+.card-author{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 1vmax;
+}
+.card-tagline-text{
+  padding-top: 0.5vmax;
+  font-size: 1vmax;
+  font-weight: 700;
+  
+}
+.card-social{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 2vmin;
+}
+
+.likes, .comments{
+  display: flex;
+  align-items: center;
+  gap: 0.6vmin;
+}
+@media screen and (max-width: 800px) {
+  .home-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vmax;
+  }
+}
+@media screen and (max-width: 450px) {
+  .navbar-container{
+    padding-left: 3vmax;
+    padding-right: 3vmax;
+  }
+  #listings-parent{
+    padding-top: 6vmax;
+  }
+  .home-text{
+    font-size: 6vmax;
+  }
+  .card-author{
+    font-size: 1.5vmax;
+  }
+  .card-tagline-text{
+    font-size: 1.7vmax;
+  }
+
 }
