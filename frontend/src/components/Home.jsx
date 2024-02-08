@@ -1,5 +1,5 @@
 import React from "react";
-import basketball from "../assets/home-basketball.jpeg"
+import basketball from "../assets/home-basketball.jpg"
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 

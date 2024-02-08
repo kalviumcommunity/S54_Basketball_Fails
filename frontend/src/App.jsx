@@ -1,8 +1,8 @@
 import "./App.css";
-import Home from "./components/Home";
-import Listing from "./components/Listing";
-import Navbar from "./components/Navbar";
-import AllRoutes from "./components/Routes/AllRoutes";
+import Home from "./Components/Home";
+import Listing from "./Components/Listing";
+import Navbar from "./Components/Navbar";
+import AllRoutes from "./Components/Routes/AllRoutes";
 
 function App() {
   return (
