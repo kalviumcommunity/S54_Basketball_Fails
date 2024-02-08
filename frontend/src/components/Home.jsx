@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
+    <div>
     <div className="home-parent">
     <div className="home-container">
       <div className="home-image">
@@ -14,15 +15,9 @@ const Home = () => {
       <div className="home-text">Worst <br /> Plays In Nba <br /> History</div>
 
     </div>
-    <Link to={"/listings"}><div className="button"><Button colorScheme="orange" >Explore</Button></div></Link>
-      <div className="home-text">Worst <br />Plays In Nba History
-      
-      </div>
-      
+    <Link to={"/listings"}><div className="button"><Button colorScheme="orange" >Explore</Button></div></Link>      
     </div>
-    <button className="explore">Explore</button>
-    
-    </div>
+   </div>
   );
 };
 
