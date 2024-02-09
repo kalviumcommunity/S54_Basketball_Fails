@@ -8,7 +8,7 @@ const router = express.Router()
 require("dotenv").config();
 
 const port = 3000;
-app.use(express.json())
+router.use(express.json())
 async function main() {
   await mongoose.connect(process.env.MONGO_KEY);
 }
