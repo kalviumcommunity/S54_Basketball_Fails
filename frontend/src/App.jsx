@@ -1,8 +1,6 @@
 import "./App.css";
-import Home from "./Components/Home";
-import Listing from "./Components/Listing";
-import Navbar from "./Components/Navbar";
-import AllRoutes from "./Components/Routes/AllRoutes";
+import Navbar from "./components/Navbar";
+import AllRoutes from "./components/Routes/AllRoutes";
 
 function App() {
   return (
