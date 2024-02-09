@@ -9,9 +9,16 @@ const postSchema = new mongoose.Schema({
     type:String,
     required:true
   },
+  tagline:{
+    type:String,
+    required:true
+  },
   username:{
     type:String,
     required:true
+  },
+  video:{
+    type:String,
   },
   likes:{
     type:Number,

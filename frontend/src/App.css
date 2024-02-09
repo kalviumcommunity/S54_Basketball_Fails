@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 @font-face {
-  font-family: Pranshu;
-  src: url("../fonts/Druk-Bold-Trial.otf");
+  font-family: pranshu, Arial, sans-serif;
+
+  src: url("./fonts/Druk-Bold-Trial.otf");
 }
 .bg-img{
   position: fixed;
@@ -33,6 +34,7 @@
 }
 
 .navbar{
+  font-family: pranshu;
   display:flex ;
   justify-content: space-between;
   color: #D0D5FA;
@@ -130,11 +132,13 @@ border: 2px solid #ffffff2e;
 .card-img>img:hover{  
   transform: scale(1.04);
 }
-
+.card-img{
+  width: 100%;
+}
 .card-img>img{
   border-radius: 10px;
   transition: all 0.2s;
-  /* width: 35vmax; */
+  width: 100%;
 
 }
 .card-author{
@@ -186,5 +190,4 @@ border: 2px solid #ffffff2e;
   .card-tagline-text{
     font-size: 1.7vmax;
   }
-
 }
