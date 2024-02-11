@@ -80,7 +80,7 @@ export default function NewPost() {
           />
           <p className="err">{errors.image?.message}</p>
         </FormControl>
-        <Button type="submit" colorScheme="red">Submit</Button>
+        <Button type="submit" colorScheme="orange"  bg={"#852328"}>Submit</Button>
       </form>
     </div>
   );
