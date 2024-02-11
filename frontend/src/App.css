@@ -90,6 +90,18 @@ border: 2px solid #ffffff2e;
   letter-spacing: 0.2vmax;
   align-items: center;
 }
+.navbar-right div::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #D0D5FA; 
+  transition: width 0.3s ease;
+}
+
+.navbar-right div:hover::after {
+  width: 100%;
+}
 .faq,login,signin:hover{
   cursor: pointer;
 }
@@ -124,6 +136,14 @@ border: 2px solid #ffffff2e;
 .button{
   text-align: center;
 }
+.loading{
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
 #listings-parent{
   padding: 5vmin 5vmin;
 }
@@ -134,6 +154,7 @@ border: 2px solid #ffffff2e;
   /* gap: 1vmin; */
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 200px;
 }
 .card-img>img:hover{  
   transform: scale(1.04);
@@ -144,7 +165,7 @@ border: 2px solid #ffffff2e;
 .card-img>img{
   border-radius: 10px;
   transition: all 0.2s;
-  width: 100%;
+  width: 60vmax;
 
 }
 .card-author{
@@ -164,6 +185,7 @@ border: 2px solid #ffffff2e;
   justify-content: space-between;
   width: 100%;
   padding-top: 2vmin;
+  align-items: flex-end;
 }
 
 .likes, .comments{
@@ -171,37 +193,66 @@ border: 2px solid #ffffff2e;
   align-items: center;
   gap: 0.6vmin;
 }
+.post-button{
+  z-index: 2;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
 .form-parent{
   flex: 1;
   display: flex;
-  padding: 10vmin 20vmin;
+  padding: 0 30vmax;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
 }
 .form{
-  padding: 2vmin;
+  padding: 2vmax 2vmax;
   background-color: black;
   border-radius: 10px;
-  color: white;
+  color: #D0D5FA;
   display: flex;
   flex-direction: column;
-  gap: 1vmin;
+  gap: 1vmax;
   align-items: center;
-  /* width: 70%; */
+  
+
+  background: #000000b3;
+
+  box-shadow: 0 8px 32px 0 rgba(16, 12, 12, 0.37);
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  border-radius: 10px;
+  border: 2px solid #ffffff2e;
 }
-@media screen and (max-width: 800px) {
+.err{
+  margin-top: 0.5vmin;
+  color: red;
+  font-size: 1vmax;
+}
+@media screen and (max-width: 850px) {
   .home-container{
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4vmax;
   }
+    .form-parent{
+    padding: 0 10vmax;
+  }
 }
+
 @media screen and (max-width: 450px) {
   .navbar-container{
     padding-left: 3vmax;
     padding-right: 3vmax;
+    
+  }
+  .navbar{
+    padding: 1.5vmax;
+  }
+  .navbar-right{
+    display: none;
   }
   #listings-parent{
     padding-top: 6vmax;
@@ -214,5 +265,11 @@ border: 2px solid #ffffff2e;
   }
   .card-tagline-text{
     font-size: 1.7vmax;
+  }
+  .form-parent{
+    padding: 0 5vmax;
+  }
+  .form{
+    font-size: 1vmax;
   }
 }

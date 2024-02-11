@@ -15,7 +15,7 @@ const Home = () => {
       <div className="home-text">Worst <br /> Plays In Nba <br /> History</div>
 
     </div>
-    <Link to={"/listings"}><div className="button"><Button colorScheme="orange" >Explore</Button></div></Link>      
+    <Link to={"/listings"}><div className="button"><Button colorScheme="orange" bg={"#852328"}>Explore</Button></div></Link>      
     </div>
    </div>
   );
