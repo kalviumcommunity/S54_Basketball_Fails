@@ -43,7 +43,7 @@ export default function Listings() {
     </SimpleGrid>
     <Link to={"/listings/new"}>
       <div className="post-button">
-        <Button colorScheme="red" bg={"#852328"} color={"white"}>
+        <Button colorScheme="red" color={"white"}>
           +
         </Button>
       </div>
