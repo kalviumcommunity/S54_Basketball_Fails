@@ -1,23 +1,28 @@
 import { Box, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import james from "../assets/jamesharden.gif"
 import { FaRegHeart } from "react-icons/fa6";
 import { LiaCommentSolid } from "react-icons/lia";
+import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Edit from './Edit';
+import { useNavigate } from "react-router-dom";
+
 
 function Usercard({post}) {
+  const navigate = useNavigate();
+  const [like,setLike] = useState(false)
+  const cardClick = () => {
+    navigate(`/listings/edit/${post._id}`);
+  };
   return (
     <Box bg="#000000b3" zIndex={"1"} color={"#D0D5FA"} padding="2vmin" borderRadius="10px">
     <div className="card">
-    {/* <div className="card-img" onClick={() => {
-  window.open(post.video, "_blank");
-}}>
-  <img src={post.image} alt="image" />
-</div> */}
-      <a href={post.video} target="_blank" rel="noopener noreferrer">
-          <div className="card-img">
-            <img src={post.image} alt="image" />
-          </div>
-        </a>
+
+        <div className="card-img" onClick={cardClick}>
+          <img src={post.image} alt="image" />
+        </div>
+      
       <div className="card-title">
         <Text fontWeight="extrabold" paddingTop={"1vmin"} fontSize="1.5vmax">
           {post.title}
@@ -34,13 +39,16 @@ function Usercard({post}) {
         </div>
       </div>
       <div className="card-social">
-        <div className="likes">
-          <FaRegHeart color='red' size={"20px"}/>
-          23k
+        <div className="likes" onClick={()=>{
+          setLike(!like)
+        }}>
+          {/* <FaRegHeart color={like ? 'red' : 'black'}  size={"20px"}/> */}
+          <FaHeart color={like ? 'red' : ''}/>
+          {`  ${post.likes}`}
         </div>
         <div className="comments">
         <LiaCommentSolid  size={"20px"} />
-          2k
+          {post.comments}
         </div>
       </div>
     </div>
