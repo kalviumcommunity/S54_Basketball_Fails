@@ -26,14 +26,15 @@ router.get("/", async (req, res) => {
   });
   res.send(returnedData);
 });
-router.post("/",async(req,res)=>{
-  let postData = new Post(req.body)
-  await postData.save()
-  .then(()=>res.send(`ADDED, ${req.body.title}`))
-  .catch((err)=>res.status(500).send(err))
-})
+// router.post("/",async(req,res)=>{
+//   let postData = new Post(req.body)
+//   await postData.save()
+//   .then(()=>res.send(`ADDED, ${req.body.title}`))
+//   .catch((err)=>res.status(500).send(err))
+// })
 router.get("/:id", async (req, res) => {
   let {id} = req.params
+  let returnedData;
   await Post.findById(id).then((data) => {
     returnedData = data;
   });
