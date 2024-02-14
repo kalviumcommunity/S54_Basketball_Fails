@@ -26,19 +26,46 @@ router.get("/", async (req, res) => {
   });
   res.send(returnedData);
 });
+// router.post("/",async(req,res)=>{
+//   let postData = new Post(req.body)
+//   await postData.save()
+//   .then(()=>res.send(`ADDED, ${req.body.title}`))
+//   .catch((err)=>res.status(500).send(err))
+// })
+router.get("/:id", async (req, res) => {
+  let {id} = req.params
+  let returnedData;
+  await Post.findById(id).then((data) => {
+    returnedData = data;
+  });
+  res.send(returnedData);
+});
+
+// router.get(
+//   "/:id",
+//   async (req, res) => {
+//     let { id } = req.params;
+//     let result = await Post.findById(id);
+//     if (result == null) {
+//       res.status(404).send("some error occured")
+//     }
+//     console.log(result);
+//     res.send(result);
+//   }
+// );
 router.post("/",async(req,res)=>{
   let postData = new Post(req.body)
   await postData.save()
   .then(()=>res.send(`ADDED, ${req.body.title}`))
   .catch((err)=>res.status(500).send(err))
 })
-router.put("/:title",async(req,res)=>{
-  const {title} = req.params
-  const newTitle = req.body.title
+router.put("/:id",async(req,res)=>{
+  const {id} = req.params
+  const newData = req.body
   try{
-    const updatedTitle = await Post.findOneAndUpdate({title:title},{title:newTitle})
+    const updatedTitle = await Post.findByIdAndUpdate(id,newData)
     if(updatedTitle){
-      res.send(`The new title is ${newTitle}`)
+      res.send(`Data Updated`)
     }
     else{
       res.status(404).send("Title not found")
@@ -48,13 +75,13 @@ router.put("/:title",async(req,res)=>{
     res.status(500).send("Internal error occured")
   }
 })
-router.delete("/",async(req ,res)=>{
+router.delete("/:id",async(req ,res)=>{
   try{
-    let toDelete = req.body.title
-    let titleDelete = await Post.deleteOne({title:toDelete})
+    let {id} = req.params
+    let titleDelete = await Post.findByIdAndDelete(id)
     console.log("titleDelete: ", titleDelete);
     if(titleDelete.deletedCount == 0){
-      res.status(404).send(`Title not found - ${req.body.title}`)
+      res.status(404).send(`Title not found`)
     }
     else{
       res.send(`Deleted ${req.body.title} succesfully`)
