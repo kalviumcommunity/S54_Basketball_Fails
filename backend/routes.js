@@ -2,13 +2,15 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Post = require("./models/post");
+const { validatePost } = require("./utils/PostValidation");
+const CustomError = require("./utils/ExpressError");
 
-const router = express.Router()
+const router = express.Router();
 
 require("dotenv").config();
 
 const port = 3000;
-router.use(express.json())
+router.use(express.json());
 async function main() {
   await mongoose.connect(process.env.MONGO_KEY);
 }
@@ -19,6 +21,15 @@ main()
   .catch((err) => {
     console.log(err);
   });
+
+const postValidation = (req, res, next) => {
+  let { error } = validatePost.validate(req.body);
+  if (error) {
+    throw new CustomError(400, error);
+  } else {
+    next();
+  }
+};
 
 router.get("/", async (req, res) => {
   await Post.find().then((data) => {
@@ -33,7 +44,7 @@ router.get("/", async (req, res) => {
 //   .catch((err)=>res.status(500).send(err))
 // })
 router.get("/:id", async (req, res) => {
-  let {id} = req.params
+  let { id } = req.params;
   let returnedData;
   await Post.findById(id).then((data) => {
     returnedData = data;
@@ -53,43 +64,45 @@ router.get("/:id", async (req, res) => {
 //     res.send(result);
 //   }
 // );
-router.post("/",async(req,res)=>{
-  let postData = new Post(req.body)
-  await postData.save()
-  .then(()=>res.send(`ADDED, ${req.body.title}`))
-  .catch((err)=>res.status(500).send(err))
-})
-router.put("/:id",async(req,res)=>{
-  const {id} = req.params
-  const newData = req.body
-  try{
-    const updatedTitle = await Post.findByIdAndUpdate(id,newData)
-    if(updatedTitle){
-      res.send(`Data Updated`)
+router.post("/", postValidation,async (req, res) => {
+  let postData = new Post(req.body);
+  await postData
+    .save()
+    .then(() => res.send(`ADDED, ${req.body.title}`))
+    .catch((err) => res.status(500).send(err));
+});
+router.put("/:id", postValidation,async (req, res) => {
+  const { id } = req.params;
+  const newData = req.body;
+  try {
+    const updatedTitle = await Post.findByIdAndUpdate(id, newData);
+    if (updatedTitle) {
+      res.send(`Data Updated`);
+    } else {
+      res.status(404).send("Title not found");
     }
-    else{
-      res.status(404).send("Title not found")
-    }
+  } catch {
+    res.status(500).send("Internal error occured");
   }
-  catch{
-    res.status(500).send("Internal error occured")
-  }
-})
-router.delete("/:id",async(req ,res)=>{
-  try{
-    let {id} = req.params
-    let titleDelete = await Post.findByIdAndDelete(id)
+});
+router.delete("/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    let titleDelete = await Post.findByIdAndDelete(id);
     console.log("titleDelete: ", titleDelete);
-    if(titleDelete.deletedCount == 0){
-      res.status(404).send(`Title not found`)
+    if (titleDelete.deletedCount == 0) {
+      res.status(404).send(`Title not found`);
+    } else {
+      res.send(`Deleted ${req.body.title} succesfully`);
     }
-    else{
-      res.send(`Deleted ${req.body.title} succesfully`)
-    }
+  } catch {
+    res.status(500).send("Internal error occured");
   }
-  catch{
-    res.status(500).send("Internal error occured")
-  }
-})
+});
 
-module.exports = router
+router.use((err, req, res, next) => {
+  let { status = 500, message = "Some error occured..!" } = err;
+  res.status(status).send(message);
+});
+
+module.exports = router;
