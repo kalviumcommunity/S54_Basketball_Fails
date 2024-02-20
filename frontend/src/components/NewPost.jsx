@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {useNavigate} from "react-router-dom"
+import { Toaster, toast } from "sonner";
 import {
   FormControl,
   FormLabel,
@@ -10,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import {Link} from 'react-router-dom'
 import axios from "axios"
+import { getCookie } from "../../utils/Cookie";
 
 export default function NewPost() {
   const navigate = useNavigate()
@@ -18,26 +20,50 @@ export default function NewPost() {
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
   // console.log(watch())
+
+
+  const promise = () =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve({ }), 1500)
+  );
+
   const FormSubmitHandler = (data)=>{
     console.log(data)
     axios.post("https://basketball-fails.onrender.com/post",data).then(()=>{
       console.log("ADDED")
-      navigate("/listings")
+        toast.promise(promise, {
+          loading: "Loading...",
+          success: (data) => {
+            return `Post has been added`;
+          },
+          error: "Error",
+        });
+        setTimeout(() => {
+          navigate(`/listings`);
+        }, 2500);
     }).catch((err)=>{
       console.log(err)
     })
   }
+  const username = getCookie("username")
+  // setValue("username",username)
+  useEffect(()=>{
+    setValue("username",username)
+  })
   return (
-    <div className="form-parent">
+    <div className="">
+      <Toaster position="top-right" richColors />
       <form className="form" onSubmit={handleSubmit(FormSubmitHandler)}>
         <Text as="b" fontSize="2.3vmax">New Post</Text>
         <Text as="i" fontSize="1vmax">Enter the following details!</Text>
         <FormControl>
           <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">Username</FormLabel>
           <Input
+          isDisabled
             type="text"
             borderColor="white"
             {...register("username", {

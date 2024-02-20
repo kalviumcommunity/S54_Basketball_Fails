@@ -5,6 +5,9 @@ import Listings from "../Listing"
 import NewPost from "../NewPost"
 import Edit from "../Edit"
 import EditForm from "../EditForm"
+import Signup from "../Signup"
+import Login from "../Login"
+import PrivateAuthRoute from "./PrivateAuthRoute"
 
 
 const AllRoutes = () => {
@@ -13,9 +16,11 @@ const AllRoutes = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/listings" element={<Listings/>}/>
-        <Route path="/listings/new" element={<NewPost/>}/>
+        <Route path="/listings/new" element={<PrivateAuthRoute><NewPost/></PrivateAuthRoute>}/>
         <Route path="/listings/edit/:id" element={<Edit/>}/>
         <Route path="/listings/edit/editForm/:id" element={<EditForm/>} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
 
   )

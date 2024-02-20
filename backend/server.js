@@ -1,6 +1,6 @@
 const express = require("express");
 const main = require("./init");
-const router = require("./routes");
+const {router,userRouter} = require("./routes");
 const app = express();
 const cors = require("cors");
 let databaseConnected = false;
@@ -14,6 +14,7 @@ main()
   });
 app.use(cors());
 app.use("/post", router);
+app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Home page");
