@@ -1,13 +1,17 @@
 import { Box, Button, Card, SimpleGrid, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Usercard from "./Usercard";
 import { Link } from "react-router-dom";
 import loading from "../assets/loadingg.gif"
+import { AppContext } from "./Context";
+import { getCookie } from "../../utils/Cookie";
 
 export default function Listings() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
+  const {login,setLogin} = useContext(AppContext)
+  const username = getCookie("username")
 
   useEffect(() => {
     axios
@@ -36,6 +40,7 @@ export default function Listings() {
     <img src={loading} alt="" />
   </div> :   
       <div id="listings-parent">
+        <div className="hello">Hello, {login ? username : "Guest"}</div>
     <SimpleGrid columns={[1, 2, 3, 3]} spacing={5}>
       {data.map((e) => {
         return <Usercard post={e} />;

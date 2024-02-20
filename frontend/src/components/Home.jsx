@@ -10,9 +10,9 @@ const Home = () => {
     <div className="home-parent">
     <div className="home-container">
       <div className="home-image">
-        <img src={basketball} alt="" />
+        <div className="home--image"><img src={basketball} alt="" /></div>
       </div>
-      <div className="home-text">Worst <br /> Plays In Nba <br /> History</div>
+      <div className="home-text">Worst <div>Plays In Nba</div>  <div>History</div> </div>
 
     </div>
     <Link to={"/listings"}><div className="button"><Button colorScheme="red" bg={"#852328"}>Explore</Button></div></Link>      

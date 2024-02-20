@@ -38,22 +38,24 @@ function Usercard({post}) {
           ~{post.username}
         </div>
       </div>
-      <div className="card-social">
-        <div className="likes" onClick={()=>{
-          setLike(!like)
-        }}>
-          {/* <FaRegHeart color={like ? 'red' : 'black'}  size={"20px"}/> */}
-          <FaHeart color={like ? 'red' : ''}/>
-          {`  ${post.likes}`}
-        </div>
-        <div className="comments">
-        <LiaCommentSolid  size={"20px"} />
-          {post.comments}
-        </div>
-      </div>
+      
     </div>
   </Box>
   )
 }
 
 export default Usercard
+
+// {/* <div className="card-social">
+//         <div className="likes" onClick={()=>{
+//           setLike(!like)
+//         }}>
+//           {/* <FaRegHeart color={like ? 'red' : 'black'}  size={"20px"}/> */}
+//           <FaHeart color={like ? 'red' : ''}/>
+//           {`  ${post.likes}`}
+//         </div>
+//         <div className="comments">
+//         <LiaCommentSolid  size={"20px"} />
+//           {post.comments}
+//         </div>
+//       </div> */}
