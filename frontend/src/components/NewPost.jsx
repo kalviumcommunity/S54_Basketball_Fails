@@ -30,10 +30,10 @@ export default function NewPost() {
   new Promise((resolve) =>
     setTimeout(() => resolve({ }), 1500)
   );
-
+  const token = getCookie("auth-token")
   const FormSubmitHandler = (data)=>{
     console.log(data)
-    axios.post("https://basketball-fails.onrender.com/post",data).then(()=>{
+    axios.post("https://basketball-fails.onrender.com/post",data,{"authorization":token}).then(()=>{
       console.log("ADDED")
         toast.promise(promise, {
           loading: "Loading...",

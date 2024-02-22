@@ -28,7 +28,7 @@ export default function Signup() {
     setTimeout(() => {
       axios
         .post("https://basketball-fails.onrender.com/user", formData)
-        .then(() => {
+        .then((result) => {
           console.log("ADDED");
           toast.update(id, {
             render: "Signed Up",
@@ -36,6 +36,7 @@ export default function Signup() {
             isLoading: false,
           });
           setCookie("username", formData.username, 365);
+          setCookie("auth-token",result.data,365)
           setLogin(loginCheck())
           setTimeout(() => {
             navigate("/listings");

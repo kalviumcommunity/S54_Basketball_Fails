@@ -6,7 +6,7 @@ const { validatePost } = require("./utils/PostValidation");
 const CustomError = require("./utils/ExpressError");
 const User = require("./models/user");
 const wrapAsync = require("./utils/wrapAsync");
-
+var jwt = require("jsonwebtoken");
 const router = express.Router();
 const userRouter = express.Router();
 
@@ -35,6 +35,19 @@ const postValidation = (req, res, next) => {
   }
 };
 
+const jwtVerify = (req, res, next) => {
+  try {
+    let { authorization } = req.headers;
+    let result = jwt.verify(authorization, process.env.JWT_PASS);
+    console.log(result.username);
+    next();
+  } catch (err) {
+    throw new CustomError(
+      403,
+      "Not authorised to access this route without correct auth token"
+    );
+  }
+};
 router.get("/", async (req, res) => {
   await Post.find().then((data) => {
     returnedData = data;
@@ -73,11 +86,13 @@ router.get(
 //     res.send(result);
 //   }
 // );
-router.post("/", postValidation, async (req, res) => {
+router.post("/",jwtVerify, postValidation, async (req, res) => {
   let postData = new Post(req.body);
   await postData
     .save()
-    .then(() => res.send(`ADDED, ${req.body.title}`))
+    .then(() => {
+      res.send("Added");
+    })
     .catch((err) => res.status(500).send(err));
 });
 router.put("/:id", postValidation, async (req, res) => {
@@ -123,14 +138,15 @@ userRouter.post(
     console.log(req.body)
     let postData = new User(req.body);
     await postData.save();
-    res.send("Added");
+    let token = jwt.sign({ username: req.body.username }, process.env.JWT_PASS);
+    res.send(token);
   })
 );
 userRouter.post(
   "/login",
   wrapAsync(async (req, res) => {
     let { username, password } = req.body;
-    let result = await User.find({ userName: username });
+    let result = await User.find({ username: username });
     if (result.length == 0) {
       throw new CustomError(404, "User not found!");
     } else {
@@ -138,7 +154,11 @@ userRouter.post(
       if (savedPassword != password) {
         throw new CustomError(401, "Wrong Password");
       } else {
-        res.send("LOGGED IN");
+        let token = jwt.sign(
+          { username: req.body.username },
+          process.env.JWT_PASS
+        );
+        res.send(token);
       }
     }
   })
