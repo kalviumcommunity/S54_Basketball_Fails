@@ -33,7 +33,11 @@ export default function NewPost() {
   const token = getCookie("auth-token")
   const FormSubmitHandler = (data)=>{
     console.log(data)
-    axios.post("https://basketball-fails.onrender.com/post",data,{"authorization":token}).then(()=>{
+    axios.post("https://basketball-fails.onrender.com/post",data,{
+      headers:{
+        "Authorization":token
+      }
+    }).then(()=>{
       console.log("ADDED")
         toast.promise(promise, {
           loading: "Loading...",
