@@ -10,6 +10,7 @@ const Navbar = () => {
   const logout = () => {
     deleteCookie("username");
     deleteCookie("auth-token")
+    location.reload()
     setLogin(loginCheck());
   };
   const loginBtn = () => {

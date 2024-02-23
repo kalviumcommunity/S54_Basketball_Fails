@@ -35,7 +35,7 @@ export default function Login() {
             type: "success",
             isLoading: false,
           });
-          setCookie("username", formData.userName, 365);
+          setCookie("username", formData.username, 365);
           setCookie("auth-token",result.data,365)
           setLogin(loginCheck())
           setTimeout(() => {

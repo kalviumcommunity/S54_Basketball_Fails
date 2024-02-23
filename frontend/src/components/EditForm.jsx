@@ -62,6 +62,8 @@ const EditForm = () => {
         setValue("title", res.data.title);
         setValue("tagline", res.data.tagline);
         setValue("image", res.data.image);
+        setValue("video", res.data.video);
+
       })
       .catch((err) => {
         console.log(err);
@@ -87,6 +89,7 @@ const EditForm = () => {
             Username
           </FormLabel>
           <Input
+          isDisabled
             type="text"
             borderColor="white"
             {...register("username", {
@@ -134,6 +137,16 @@ const EditForm = () => {
             })}
           />
           <p className="err">{errors.image?.message}</p>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">
+            Video Link
+          </FormLabel>
+          <Input
+            type="text"
+            borderColor="white"
+            {...register("video")}
+          />
         </FormControl>
         <Button colorScheme="red" bg={"#852328"} type="submit">
           Submit

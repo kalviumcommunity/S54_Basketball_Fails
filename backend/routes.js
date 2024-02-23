@@ -166,6 +166,7 @@ userRouter.post(
 
 router.use((err, req, res, next) => {
   let { status = 500, message = "Some error occured..!" } = err;
+  console.log(err)
   res.status(status).send(message);
 });
 

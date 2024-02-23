@@ -77,7 +77,7 @@ function Edit() {
         });
     }
   };
-  // console.log("video1", data.video);
+  console.log("video1", data.video);
   return (
     <div className="parent-edit-video">
       <Toaster position="top-right" richColors />

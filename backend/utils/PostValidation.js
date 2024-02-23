@@ -5,5 +5,5 @@ module.exports.validatePost = Joi.object({
   tagline: Joi.string().required(),
   username: Joi.string().required(),
   image: Joi.string().required(),
-  video: Joi.string()
+  video: Joi.string().allow("").optional()
 });
