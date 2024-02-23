@@ -84,7 +84,7 @@ export default function Login() {
           <Input
             type="text"
             borderColor="#D0D5FA"
-            {...register("userName", {
+            {...register("username", {
               required: "Username is required",
             })}
           />

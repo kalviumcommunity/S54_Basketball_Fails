@@ -110,6 +110,14 @@ export default function NewPost() {
           />
           <p className="err">{errors.image?.message}</p>
         </FormControl>
+        <FormControl>
+          <FormLabel fontSize="1.2vmax" as="i" fontWeight="550">Video Link (optional)</FormLabel>
+          <Input
+            type="text"
+            borderColor="white"
+            {...register("video")}
+          />
+        </FormControl>
         <Button type="submit" colorScheme="red"  bg={"#852328"}>Submit</Button>
       </form>
     </div>
