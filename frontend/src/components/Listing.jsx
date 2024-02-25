@@ -40,7 +40,7 @@ export default function Listings() {
     <img src={loading} alt="" />
   </div> :   
       <div id="listings-parent">
-        <div className="hello">Hello, {login ? username : "Guest"}</div>
+        <div className="hello"></div>
     <SimpleGrid columns={[1, 2, 3, 3]} spacing={5}>
       {data.map((e) => {
         return <Usercard post={e} />;
