@@ -90,7 +90,7 @@ border: 2px solid #ffffff2e;
 }
 .navbar-right{
   display: flex;
-  gap: 2vmin;
+  gap: 3vmax;
   font-size: 1.2vmax;
   letter-spacing: 0.2vmax;
   align-items: center;
@@ -320,6 +320,63 @@ border: 2px solid #ffffff2e;
   gap: 6vmax;
   justify-content: center;
 }
+.users-parent {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5vmin;
+  align-items: center;
+  gap: 5vmin;
+}
+.All-users{
+  font-family: Home;
+}
+.userList{
+  width: 40vmax;
+  padding: 1.3vmax 2vmax;
+  background-color: black;
+  border-radius: 10px;
+  color: #D0D5FA;
+  display: flex;
+  flex-direction: column;
+  gap: 1vmax;
+  /* align-items: center; */
+  background: #000000b3;
+  box-shadow: 0 8px 32px 0 rgba(16, 12, 12, 0.37);
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  border-radius: 10px;
+  border: 2px solid #ffffff2e;
+  max-height: 30vmax;
+  overflow: scroll;
+}
+.usernames{
+  display: flex;
+}
+.usernames li::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #D0D5FA; 
+  transition: width 0.3s ease;
+}
+
+.usernames li:hover::after {
+  width: 100%;
+}
+.users{
+  display: flex;
+  flex-direction: column;
+  gap: 1vmax;
+}
+.loader{
+  width: 100%;
+  height: 40vmax;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
 @media screen and (max-width: 850px) {
   .home-container{
     justify-content: center;
@@ -347,6 +404,7 @@ border: 2px solid #ffffff2e;
   .navbar-right{
     font-size: 1vmax;
     /* display: none; */
+    gap: 1.5vmax;
   }
   .home-container{
     flex-direction: column;

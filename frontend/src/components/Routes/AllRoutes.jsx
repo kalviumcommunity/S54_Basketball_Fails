@@ -8,6 +8,8 @@ import EditForm from "../EditForm"
 import Signup from "../Signup"
 import Login from "../Login"
 import PrivateAuthRoute from "./PrivateAuthRoute"
+import Users from "../Users"
+import UserPosts from "../UserPosts"
 
 
 const AllRoutes = () => {
@@ -21,6 +23,8 @@ const AllRoutes = () => {
         <Route path="/listings/edit/editForm/:id" element={<EditForm/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/users" element={<Users/>} />
+        <Route path="/posts/:user" element={<UserPosts/>} />
       </Routes>
 
   )

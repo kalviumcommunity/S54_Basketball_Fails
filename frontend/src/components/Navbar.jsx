@@ -22,9 +22,8 @@ const Navbar = () => {
       );
     } else {
       return (
-        <Link to="/signup" className="navbar-right">
-          <div className="faq">FAQ</div>
-          <div className="login">Login / Sign up</div>
+        <Link to="/signup" >
+          <div className="login">Sign up</div>
         </Link>
       );
     }
@@ -40,7 +39,10 @@ const Navbar = () => {
             Basketball <span>Fails</span>
           </div></Link>
         </div>
+        <div className="navbar-right">
+        <Link to="/users"><div>Users</div></Link>
         {loginBtn()}
+        </div>
       </div>
     </div>
   );

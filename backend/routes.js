@@ -124,6 +124,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.get(
+  "/user/:user",
+  wrapAsync(async(req,res)=>{
+    let {user} = req.params
+    let result = await Post.find({username:user})
+    if(result.length==0){
+      throw new CustomError(404,"No posts associated with this user found")
+    }
+    res.send(result)
+  })
+)
+
 userRouter.get("/", async (req, res) => {
   let resData;
   await User.find().then((data) => {
