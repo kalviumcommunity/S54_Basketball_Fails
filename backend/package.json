@@ -2,7 +2,10 @@
   "name": "s54_basketball_fails",
   "version": "1.0.0",
   "description": "List of Funniest Basketball Fails",
-  "main": "backend/server.js",
+  "main": "backend/index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "test": "",
     "start": "node index.js",
