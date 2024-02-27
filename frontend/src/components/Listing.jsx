@@ -15,7 +15,7 @@ export default function Listings() {
 
   useEffect(() => {
     axios
-      .get("https://basketball-fails.onrender.com/post")
+      .get("https://basketball-backend.vercel.app/post")
       .then((res) => {
         setData(res.data);
         setIsLoading(false); 
@@ -40,7 +40,7 @@ export default function Listings() {
     <img src={loading} alt="" />
   </div> :   
       <div id="listings-parent">
-        <div className="hello"></div>
+         <div className="hello">{login ? `Hello, ${username}` : ""}</div>
     <SimpleGrid columns={[1, 2, 3, 3]} spacing={5}>
       {data.map((e) => {
         return <Usercard post={e} />;

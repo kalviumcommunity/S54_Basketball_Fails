@@ -1,4 +1,3 @@
-// Edit.js
 
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
@@ -7,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 import { getCookie } from "../../utils/Cookie";
-
 function Edit() {
   const navigate = useNavigate();
   const username = getCookie("username");
@@ -17,22 +15,22 @@ function Edit() {
   const editPost = () => {
     navigate(`/listings/edit/editForm/${data._id}`);
   };
-
+  
   useEffect(() => {
     axios
-      .get(`https://basketball-fails.onrender.com/post/${id}`)
-      .then((res) => {
-        console.log(res)
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err.response.data == "Post not found..!") {
-          toast.error("Post not found!");
-        }
-      });
+    .get(`https://basketball-backend.vercel.app/post/${id}`)
+    .then((res) => {
+      setData(res.data);
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err.response.data == "Post not found..!") {
+        toast.error("Post not found!");
+      }
+    });
   }, []);
-
+  
   const adminOption = () => {
     if (username == data.username) {
       return (
@@ -58,7 +56,7 @@ function Edit() {
     console.log(result);
     if (result) {
       axios
-        .delete(`https://basketball-fails.onrender.com/post/${data._id}`)
+        .delete(`https://basketball-backend.vercel.app/post/${data._id}`)
         .then((res) => {
           console.log(res);
           toast.promise(promise, {

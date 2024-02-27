@@ -32,7 +32,7 @@ const EditForm = () => {
   
   const FormSubmitHandler = (formData) => {
     axios
-      .put(`https://basketball-fails.onrender.com/post/${data._id}`, formData)
+      .put(`https://basketball-backend.vercel.app/post/${data._id}`, formData)
       .then(() => {
         console.log("ADDED");
         toast.promise(promise, {
@@ -55,7 +55,7 @@ const EditForm = () => {
 
   useEffect(() => {
     axios
-      .get(`https://basketball-fails.onrender.com/post/${id}`)
+      .get(`https://basketball-backend.vercel.app/post/${id}`)
       .then((res) => {
         setData(res.data);
         setValue("username", res.data.username);

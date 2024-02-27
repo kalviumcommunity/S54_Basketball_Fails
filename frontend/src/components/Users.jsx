@@ -10,7 +10,7 @@ export default function Users() {
 
   useEffect(() => {
       axios
-        .get("https://basketball-fails.onrender.com/user")
+        .get("https://basketball-backend.vercel.app/user")
         .then((res) => {
           setData(res.data);
         })

@@ -12,7 +12,7 @@ export default function UserPosts() {
   const navigate = useNavigate()
   useEffect(() => {
     axios
-      .get(`https://basketball-fails.onrender.com/post/user/${user}`)
+      .get(`https://basketball-backend.vercel.app/post/user/${user}`)
       .then((res) => {
         console.log(res.data);
         setData(res.data);

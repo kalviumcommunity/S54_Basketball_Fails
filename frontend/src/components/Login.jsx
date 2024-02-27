@@ -27,7 +27,7 @@ export default function Login() {
     const id = toast.loading("Logging In...");
     setTimeout(() => {
       axios
-        .post("https://basketball-fails.onrender.com/user/login", formData)
+        .post("https://basketball-backend.vercel.app/user/login", formData)
         .then((result) => {
           console.log("ADDED");
           toast.update(id, {

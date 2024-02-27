@@ -33,7 +33,7 @@ export default function NewPost() {
   const token = getCookie("auth-token")
   const FormSubmitHandler = (data)=>{
     console.log(data)
-    axios.post("https://basketball-fails.onrender.com/post",data,{
+    axios.post("https://basketball-backend.vercel.app/post",data,{
       headers:{
         "Authorization":token
       }

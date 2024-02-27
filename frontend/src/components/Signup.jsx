@@ -27,7 +27,7 @@ export default function Signup() {
     const id = toast.loading("Signing Up...");
     setTimeout(() => {
       axios
-        .post("https://basketball-fails.onrender.com/user", formData)
+        .post("https://basketball-backend.vercel.app/user", formData)
         .then((result) => {
           console.log("ADDED");
           toast.update(id, {
